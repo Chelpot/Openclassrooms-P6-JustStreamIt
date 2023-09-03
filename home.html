@@ -19,20 +19,26 @@
   </header>
   <body>
     <main>
-      <section class="sectionBestMovie">
-        <article class="articleBestMovie">
-          <h1 class="BestMovieTitle">Titre de la video</h1>
-          <p class="BestMovieDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lorem tortor, molestie eleifend sollicitudin vitae, tincidunt sed lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque viverra augue, in mattis nisl ultrices a. Nam bibendum iaculis nisl, quis dictum leo vehicula non. Aenean lectus sem, volutpat vitae lacinia id, molestie vel nibh. Sed blandit nulla nec tincidunt pellentesque. Sed eu tincidunt nibh. Suspendisse semper, arcu non commodo tristique, massa augue dapibus libero, a pellentesque risus nisi in sem. Proin tempor tincidunt nibh, vel ultricies nisi suscipit sit amet. Mauris luctus, augue posuere rhoncus mollis, nunc quam facilisis turpis, at interdum leo est sed lorem. </p>
-          <button class="BestMovieButton">Play</button>
-        </article>
-        <article class="BestMovieImg">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lorem tortor, molestie eleifend sollicitudin vitae, tincidunt sed lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque viverra augue, in mattis nisl ultrices a. Nam bibendum iaculis nisl, quis dictum leo vehicula non. Aenean lectus sem, volutpat vitae lacinia id, molestie vel nibh. Sed blandit nulla nec tincidunt pellentesque. Sed eu tincidunt nibh. Suspendisse semper, arcu non commodo tristique, massa augue dapibus libero, a pellentesque risus nisi in sem. Proin tempor tincidunt nibh, vel ultricies nisi suscipit sit amet. Mauris luctus, augue posuere rhoncus mollis, nunc quam facilisis turpis, at interdum leo est sed lorem. </p>
-        </article>
-      </section>
+      <div id="popup">
+        <div class="popup-content">
+          <section class="sectionBestMovie">
+            <article class="articleBestMovie">
+              <h1 class="BestMovieTitle">Titre de la video</h1>
+              <p class="BestMovieDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lorem tortor, molestie eleifend sollicitudin vitae, tincidunt sed lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque viverra augue, in mattis nisl ultrices a. Nam bibendum iaculis nisl, quis dictum leo vehicula non. Aenean lectus sem, volutpat vitae lacinia id, molestie vel nibh. Sed blandit nulla nec tincidunt pellentesque. Sed eu tincidunt nibh. Suspendisse semper, arcu non commodo tristique, massa augue dapibus libero, a pellentesque risus nisi in sem. Proin tempor tincidunt nibh, vel ultricies nisi suscipit sit amet. Mauris luctus, augue posuere rhoncus mollis, nunc quam facilisis turpis, at interdum leo est sed lorem. </p>
+              <button class="BestMovieButton">Play</button>
+            </article>
+            <article class="BestMovieImg">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lorem tortor, molestie eleifend sollicitudin vitae, tincidunt sed lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque viverra augue, in mattis nisl ultrices a. Nam bibendum iaculis nisl, quis dictum leo vehicula non. Aenean lectus sem, volutpat vitae lacinia id, molestie vel nibh. Sed blandit nulla nec tincidunt pellentesque. Sed eu tincidunt nibh. Suspendisse semper, arcu non commodo tristique, massa augue dapibus libero, a pellentesque risus nisi in sem. Proin tempor tincidunt nibh, vel ultricies nisi suscipit sit amet. Mauris luctus, augue posuere rhoncus mollis, nunc quam facilisis turpis, at interdum leo est sed lorem. </p>
+            </article>
+            <span class="close">&times;</span>
+          </section>
+        </div>
+      </div>
+      <button id="myBtn">Open popup for movie (test)</button>
       <section class="sectionCategories">
         <h1 class="categoryTitle">Films les mieux notés</h1>
         <div class="gridCategories">
-          <div class="film">Film test</div>
+          <div class="film" id="filmtest">Film test</div>
           <div class="film">Film test</div>
           <div class="film">Film test</div>
           <div class="film">Film test</div>
