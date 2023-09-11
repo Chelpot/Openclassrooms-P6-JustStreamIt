@@ -1,28 +1,42 @@
+body {
+    background-color: antiquewhite;
+    margin: 0;
+}
+
 /* Navbar */
 .navbar {
     display: grid;
     grid-template-columns: 1fr 3fr;
-    grid-template-rows: 50px;
+    grid-template-rows: 40px;
     grid-gap: 10px;
-    background-color: aqua  ;
+    background-color: black  ;
     padding: 1.5em 0.6em;
     font-size: 2em;
 }
 
 .navbarTitle {
-    background-color: blue;
     display: flex;
     justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    color: whitesmoke;
 }
 
 .navbarItems {
-    background-color: yellow;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     padding: 0 15em;
-
+    font-family: 'Poppins', sans-serif;
 }
+
+.navbarLinks{
+    color: whitesmoke;
+}
+
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
 
 /* End of Navbar */
 
@@ -63,10 +77,17 @@
     justify-items: center;
     align-content: space-evenly;
     align-items: center;
-    background-color: purple;
+    background-color: gainsboro;
     padding: 2em;
     margin: 2em 10em;
     gap: 10px;
+    box-shadow: 5px 5px 15px 5px #000000;
+    border-radius: 50% 20% / 10% 40%;
+
+}
+
+.gridCategories img {
+    border-radius: 5px;
 }
 
 .film{
@@ -75,6 +96,7 @@
 
 .categoryTitle{
     text-align: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 .sectionCategories{

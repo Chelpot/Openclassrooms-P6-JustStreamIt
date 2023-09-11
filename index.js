@@ -1,5 +1,4 @@
 var popup = document.getElementById("popup");
-var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 var leftBtnCat1 = document.getElementById("left-btn-category-1")
@@ -12,10 +11,6 @@ var page_fantasy = 1
 var page_best = 1
 var max_page_fantasy
 var max_page_best
-
-btn.onclick = function() {
-  popup.style.display = "block";
-}
 
 leftBtnCat1.onclick = function() {
   if(page_fantasy > 1){
@@ -96,22 +91,3 @@ films.forEach((element, index) => {
 
 logMoviesBest(page_best)
 
-
-/* Quand on cliquera sur une image on est censé afficher la popup avec le film dedans,
-mais comment se souvenir pour une image donnée des infos associé ? Solution une array
-de 5 elements avec les données stoqués dedans ? donc 4 array de 5 chargés à chaque fois
-mais comment faire pour les click listener ?*/
-
-let positions = {
-  categories: 1,
-  categories: 1,
-  categories: 1,
-  categories: 1,
-  categories: 1
-}
-
-if (positions[category] == 1) {
-  document.querySelector("#" + category +  " .left").classList.add("");   
-} else if (positions[category] > (nb_total_elt - nb_visible_elt)) {
-  document.querySelector("#" + category +  " .right").classList.add("");
-}
