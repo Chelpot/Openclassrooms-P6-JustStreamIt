@@ -58,10 +58,13 @@
 
 .gridCategories{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 10em;
+    grid-template-columns: 0.2fr 1fr 1fr 1fr 1fr 1fr 0.2fr;
+    justify-content: space-evenly;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
     background-color: purple;
-    padding: 1em;
+    padding: 2em;
     margin: 2em 10em;
     gap: 10px;
 }
@@ -98,11 +101,14 @@
   margin: auto;
   border: 1px solid #888;
   width: 80%;
+  position: relative; 
 }
 
 .close {
-  color: #aaa11a;
-  float: right;
+  color: #b1b1af;
+  right: 1em;
+  top: 1em;
+  position: absolute;
   font-size: 28px;
   font-weight: bold;
 }
