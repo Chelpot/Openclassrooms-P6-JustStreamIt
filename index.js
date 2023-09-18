@@ -14,6 +14,7 @@ var rightBtnCat3 = document.getElementById("right-btn-category-3")
 var leftBtnBest = document.getElementById("left-btn-best_movie")
 var rightBtnBest = document.getElementById("right-btn-best_movie")
 
+var dictPagesByCategory = {}
 
 /* init pages */
 var page_fantasy = 1
@@ -21,23 +22,18 @@ var page_history = 1
 var page_action = 1
 var page_best = 1
 
-var max_page_fantasy
-var max_page_history
-var max_page_action
-var max_page_best
-
 /* fantasy listener */
 leftBtnCat1.onclick = function() {
   if(page_fantasy > 1){
     page_fantasy -= 1;
-    logMoviesFantasy(page_fantasy);
+    logMovies(page_fantasy, "Fantasy");
   }
 }
 
 rightBtnCat1.onclick = function() {
-  if(page_fantasy < max_page_fantasy){
+  if(page_fantasy < dictPagesByCategory["maxPageFantasy"]){
     page_fantasy += 1
-    logMoviesFantasy(page_fantasy);
+    logMovies(page_fantasy, "Fantasy");
   }
 }
 
@@ -45,14 +41,14 @@ rightBtnCat1.onclick = function() {
 leftBtnCat2.onclick = function() {
   if(page_history > 1){
     page_history -= 1;
-    logMoviesHistory(page_history);
+    logMovies(page_history, "History");
   }
 }
 
 rightBtnCat2.onclick = function() {
-  if(page_history < max_page_history){
+  if(page_history < dictPagesByCategory["maxPageHistory"]){
     page_history += 1
-    logMoviesHistory(page_history);
+    logMovies(page_history, "History");
   }
 }
 
@@ -60,14 +56,14 @@ rightBtnCat2.onclick = function() {
 leftBtnCat3.onclick = function() {
   if(page_action > 1){
     page_action -= 1;
-    logMoviesAction(page_action);
+    logMovies(page_action, "Action");
   }
 }
 
 rightBtnCat3.onclick = function() {
-  if(page_action < max_page_action){
+  if(page_action < dictPagesByCategory["maxPageHistory"]){
     page_action += 1
-    logMoviesAction(page_action);
+    logMovies(page_action, "Action");
   }
 }
 
@@ -119,63 +115,24 @@ films.forEach((element, index) => {
 
 logMoviesBest(page_best)
 
-async function logMoviesFantasy(nbPage) {
+async function logMovies(nbPage, categoryName) {
   const response = await fetch("http://localhost:8000/api/v1/titles/?" + new URLSearchParams({
-    genre: 'Fantasy',
+    genre: categoryName,
     page: nbPage,
-}));
+  }))
 
-  const movies = await response.json();
-  max_page_fantasy = Math.trunc(movies.count/5);
-
-  var films = document.getElementsByClassName("film-cat1");
-  films = Array.from(films)
-  films.forEach((element, index) => {
-    element.textContent = movies.results[index].title;
-    element.src = movies.results[index].image_url;
-  });
-
+  const data = await response.json();
+  dictPagesByCategory[`maxPage${categoryName}`] = Math.trunc(data.count/5);
+  
+  /* For each img in our Carousel we assign the corresponding datas */
+  var movies_elements = document.getElementsByClassName(`film-${categoryName}`);
+  movies_elements = Array.from(movies_elements)
+  movies_elements.forEach((element, index) => {
+    element.textContent = data.results[index].title;
+    element.src = data.results[index].image_url;
+  })
 }
 
-logMoviesFantasy(page_fantasy)
-
-async function logMoviesHistory(nbPage) {
-  const response = await fetch("http://localhost:8000/api/v1/titles/?" + new URLSearchParams({
-    genre: 'History',
-    page: nbPage,
-}));
-
-  const movies = await response.json();
-  max_page_history = Math.trunc(movies.count/5);
-
-  var films = document.getElementsByClassName("film-cat2");
-  films = Array.from(films)
-  films.forEach((element, index) => {
-    element.textContent = movies.results[index].title;
-    element.src = movies.results[index].image_url;
-  });
-
-}
-
-logMoviesHistory(page_history)
-
-async function logMoviesAction(nbPage) {
-  const response = await fetch("http://localhost:8000/api/v1/titles/?" + new URLSearchParams({
-    genre: 'Action',
-    page: nbPage,
-}));
-
-  const movies = await response.json();
-  max_page_action = Math.trunc(movies.count/5);
-
-  var films = document.getElementsByClassName("film-cat3");
-  films = Array.from(films)
-  films.forEach((element, index) => {
-    element.textContent = movies.results[index].title;
-    url_img = movies.results[index].image_url
-    console.log(url_img)
-  });
-
-}
-
-logMoviesAction(page_action)
+logMovies(1, "Fantasy");
+logMovies(1, "History");
+logMovies(1, "Action");
