@@ -79,10 +79,11 @@ a:active { text-decoration: none; }
     align-items: center;
     background-color: gainsboro;
     padding: 2em;
-    margin: 2em 10em;
+    margin: 2em auto;
     gap: 10px;
     box-shadow: 5px 5px 15px 5px #000000;
     border-radius: 50% 20% / 10% 40%;
+    min-width: 40em;
 
 }
 
