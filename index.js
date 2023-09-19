@@ -93,6 +93,36 @@ window.onclick = function(event) {
   }
 }
 
+document.addEventListener("click", function(e) {
+  if (e.target.classList.contains("film")) {
+    title = e.target.textContent;
+    openPopup(title)
+    
+  }
+});
+
+
+async function openPopup(title) {
+  const response = await fetch("http://localhost:8000/api/v1/titles/?" + new URLSearchParams({
+    title: title
+  }));
+  data = await response.json()
+  data = data.results[0]
+  popup.style.display = "inline-block";
+
+
+  // Load data in popup
+  document.getElementById("popupTitle").textContent = data.title;
+  document.getElementById("popupYear").textContent = "Année : " + data.year;
+  document.getElementById("popupVotes").textContent = "Nombre de votes : " + data.votes;
+  document.getElementById("popupImbScore").textContent = "Score sur le site Imb : " + data.imdb_score;
+  document.getElementById("popupDirectors").textContent = "Directeurs : " + Array.from(data.directors).join(' | ');
+  document.getElementById("popupActors").textContent = "Acteurs : " + Array.from(data.actors).join(' | ');
+  document.getElementById("popupWriters").textContent = "Scénaristes : " + Array.from(data.writers).join(' | ');
+  document.getElementById("popupGenres").textContent = "Genres : " + Array.from(data.genres).join(' | ');
+  document.getElementById("popupImg").src = data.image_url;
+}
+
 
 
 async function logMoviesBest(nbPage) {

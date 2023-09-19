@@ -43,31 +43,26 @@ a:active { text-decoration: none; }
 /**/
 .sectionBestMovie {
     display: grid;
-    grid-template-columns: 3fr 7fr;
+    grid-template-columns: 7fr 3fr;
     height: 25em;
-    background-color: violet;
-    padding: 1em;
+    background-color: gainsboro;
+    padding: 0.5em;
     gap: 10px;
+    width: 100%;
     display: inline-grid;
     overflow: hidden;
+
 }
 
 .articleBestMovie{
     height: 100%;
-    background-color: aquamarine;
+    background-color: bisque;
     }
 .BestMovieImg{
+    display: block;
     height: 100%;
     background-color: brown;
     object-fit: cover; object-position: 100% 0;
-}
-.BestMovieDescription{
-    text-align: justify;
-    overflow: auto;
-}
-.BestMovieTitle{
-}
-.BestmovieButton{
 }
 
 .gridCategories{
@@ -89,10 +84,6 @@ a:active { text-decoration: none; }
 
 .gridCategories img {
     border-radius: 5px;
-}
-
-.film{
-    background-color: grey;
 }
 
 .categoryTitle{
@@ -123,14 +114,31 @@ a:active { text-decoration: none; }
 .popup-content {
   margin: auto;
   border: 1px solid #888;
-  width: 80%;
+  width: 60%;
   position: relative; 
+}
+
+.popupList {
+    border-bottom: 2px solid grey ;
+    margin-right: 3em;
+    margin-bottom: 0.5em;
+    list-style-type: none
+}
+
+#popupTitle {
+    font-size: 3em;
+}
+
+#popupImg{
+    margin: auto;
+    display: block;
+    height: 100%;
 }
 
 .close {
   color: #b1b1af;
-  right: 1em;
-  top: 1em;
+  right: 0.25em;
+  top: 0.5em;
   position: absolute;
   font-size: 28px;
   font-weight: bold;
@@ -143,3 +151,8 @@ a:active { text-decoration: none; }
   cursor: pointer;
 }
 /*End of popup section*/
+
+
+#popupImg {
+
+}
