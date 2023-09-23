@@ -21,7 +21,7 @@ main {
     width: 100%;
 }
 
-.navbarTitle {
+.navbar-title {
     display: flex;
     justify-content: center;
     font-family: 'Poppins', sans-serif;
@@ -31,7 +31,7 @@ main {
     width: 30%;
 }
 
-.navbarItems {
+.navbar-items {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -39,7 +39,7 @@ main {
     font-family: 'Poppins', sans-serif;
 }
 
-.navbarLinks{
+.navbar-links{
     color: whitesmoke;
 }
 
@@ -51,7 +51,7 @@ a:active { text-decoration: none; }
 /* End of Navbar */
 
 /**/
-.sectionBestMovie {
+.section-best-movie {
     display: grid;
     grid-template-columns: 7fr 3fr;
     height: 25em;
@@ -64,18 +64,18 @@ a:active { text-decoration: none; }
 
 }
 
-.articleBestMovie{
+.article-best-movie{
     height: 100%;
     background-color: bisque;
     }
-.BestMovieImg{
+.best-movie-img{
     display: block;
     height: 100%;
     background-color: brown;
     object-fit: cover; object-position: 100% 0;
 }
 
-.gridCategories{
+.grid-categories{
     display: grid;
     grid-template-columns: 0.2fr 1fr 1fr 1fr 1fr 1fr 0.2fr;
     justify-content: space-evenly;
@@ -92,16 +92,16 @@ a:active { text-decoration: none; }
 
 }
 
-.gridCategories img {
+.grid-categories img {
     border-radius: 5px;
 }
 
-.categoryTitle{
+.category-title{
     text-align: center;
     font-family: 'Poppins', sans-serif;
 }
 
-.sectionCategories{
+.section-categories{
     margin: 0 10em;
     scroll-margin-block-start: 8.5em;
     
@@ -130,18 +130,18 @@ a:active { text-decoration: none; }
   position: relative; 
 }
 
-.popupList {
+.popup-list {
     border-bottom: 2px solid grey ;
     margin-right: 3em;
     margin-bottom: 0.5em;
     list-style-type: none
 }
 
-#popupTitle {
+#popup-title {
     font-size: 3em;
 }
 
-#popupImg{
+#popup-img{
     margin: auto;
     display: block;
     height: 100%;
@@ -165,6 +165,6 @@ a:active { text-decoration: none; }
 /*End of popup section*/
 
 
-#popupImg {
+#popup-img {
 
 }
