@@ -16,74 +16,74 @@ var rightBtnCat2 = document.getElementById("right-btn-category-2")
 var leftBtnCat3 = document.getElementById("left-btn-category-3")
 var rightBtnCat3 = document.getElementById("right-btn-category-3")
 
-var leftBtnBest = document.getElementById("left-btn-best_movie")
-var rightBtnBest = document.getElementById("right-btn-best_movie")
+var leftBtnBest = document.getElementById("left-btn-best-movie")
+var rightBtnBest = document.getElementById("right-btn-best-movie")
 
 var dictPagesByCategory = {}
 
 /* init pages */
-var page_fantasy = 1
-var page_history = 1
-var page_action = 1
-var page_best = 1
+var pageFantasy = 1
+var pageHistory = 1
+var pageAction = 1
+var pageBest = 1
 
 /* fantasy listener */
 leftBtnCat1.onclick = function() {
-  if(page_fantasy > 1){
-    page_fantasy -= 1;
-    logMovies(page_fantasy, CATEGORY1);
+  if(pageFantasy > 1){
+    pageFantasy -= 1;
+    logMovies(pageFantasy, CATEGORY1);
   }
 }
 
 rightBtnCat1.onclick = function() {
-  if(page_fantasy < dictPagesByCategory["maxPageFantasy"]){
-    page_fantasy += 1
-    logMovies(page_fantasy, CATEGORY1);
+  if(pageFantasy < dictPagesByCategory["maxPageFantasy"]){
+    pageFantasy += 1
+    logMovies(pageFantasy, CATEGORY1);
   }
 }
 
 /* history listener */
 leftBtnCat2.onclick = function() {
-  if(page_history > 1){
-    page_history -= 1;
-    logMovies(page_history, CATEGORY2);
+  if(pageHistory > 1){
+    pageHistory -= 1;
+    logMovies(pageHistory, CATEGORY2);
   }
 }
 
 rightBtnCat2.onclick = function() {
-  if(page_history < dictPagesByCategory["maxPageHistory"]){
-    page_history += 1
-    logMovies(page_history, CATEGORY2);
+  if(pageHistory < dictPagesByCategory["maxPageHistory"]){
+    pageHistory += 1
+    logMovies(pageHistory, CATEGORY2);
   }
 }
 
 /* action listener */
 leftBtnCat3.onclick = function() {
-  if(page_action > 1){
-    page_action -= 1;
-    logMovies(page_action, CATEGORY3);
+  if(pageAction > 1){
+    pageAction -= 1;
+    logMovies(pageAction, CATEGORY3);
   }
 }
 
 rightBtnCat3.onclick = function() {
-  if(page_action < dictPagesByCategory["maxPageHistory"]){
-    page_action += 1
-    logMovies(page_action, CATEGORY3);
+  if(pageAction < dictPagesByCategory["maxPageHistory"]){
+    pageAction += 1
+    logMovies(pageAction, CATEGORY3);
   }
 }
 
 /* best movies listener */
 leftBtnBest.onclick = function() {
-  if(page_best > 1){
-    page_best -= 1;
-    logMoviesBest(page_best);
+  if(pageBest > 1){
+    pageBest -= 1;
+    logMoviesBest(pageBest);
   }
 }
 
 rightBtnBest.onclick = function() {
-  if(page_best < max_page_best){
-    page_best += 1
-    logMoviesBest(page_best);
+  if(pageBest < maxPageBest){
+    pageBest += 1
+    logMoviesBest(pageBest);
   }
 }
 
@@ -135,7 +135,7 @@ async function logMoviesBest(nbPage) {
 }));
 
 const movies = await response.json();
-max_page_best = Math.trunc(movies.count/5);
+maxPageBest = Math.trunc(movies.count/5);
 
 var films = document.getElementsByClassName("film-best");
 films = Array.from(films)
@@ -146,7 +146,7 @@ films.forEach((element, index) => {
 
 }
 
-logMoviesBest(page_best)
+logMoviesBest(pageBest)
 
 async function logMovies(nbPage, categoryName) {
   const response = await fetch("http://localhost:8000/api/v1/titles/?" + new URLSearchParams({
@@ -159,9 +159,9 @@ async function logMovies(nbPage, categoryName) {
   dictPagesByCategory[`maxPage${categoryName}`] = Math.trunc(data.count/5);
   categoryName = categoryName.toLowerCase()
   /* For each img in our Carousel we assign the corresponding datas */
-  var movies_elements = document.getElementsByClassName(`film-${categoryName}`);
-  movies_elements = Array.from(movies_elements)
-  movies_elements.forEach((element, index) => {
+  var moviesElements = document.getElementsByClassName(`film-${categoryName}`);
+  moviesElements = Array.from(moviesElements)
+  moviesElements.forEach((element, index) => {
     element.textContent = data.results[index].title;
     element.src = data.results[index].image_url;
   })
