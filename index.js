@@ -159,7 +159,7 @@ async function logMovies(nbPage, categoryName) {
   const response = await fetch("http://localhost:8000/api/v1/titles/?" + new URLSearchParams({
     genre: categoryName,
     page: nbPage,
-    sort_by: "-votes"
+    sort_by: "-imdb_score"
   }))
 
   const data = await response.json();
@@ -171,6 +171,8 @@ async function logMovies(nbPage, categoryName) {
   moviesElements.forEach((element, index) => {
     element.textContent = data.results[index].title;
     element.src = data.results[index].image_url;
+    element.setAttribute('alt', data.results[index].title)
+
   })
 }
 
