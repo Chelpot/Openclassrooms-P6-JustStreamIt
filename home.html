@@ -15,7 +15,7 @@
     <nav class="navbar">
         <img class="navbar-title" src="images/JuststreamIt-logo.png" alt="No Image">
         <div class="navbar-items">
-          <a href="#home" class="navbar-links">Accueil</a>
+          <a href="#section-best-movie" class="navbar-links">Accueil</a>
           <a href="#categories" class="navbar-links">Catégories</a>
         </div>
     </nav>
@@ -24,8 +24,8 @@
     <main>
       <div id="popup">
         <div class="popup-content">
-          <section class="section-best-movie">
-            <article class="article-best-movie">
+          <section class="section-popup-movie">
+            <article class="article-popup-movie">
               <h1 id="popup-title"></h1>
               <p id="popup-description"></p>
               <ul class="popup-grid-info">
@@ -41,13 +41,25 @@
               </ul>
 
             </article>
-            <article class="best-movie-img">
+            <article class="best-popup-img">
               <img src="images/no_image.png" id="popup-img" alt="No Image"> 
             </article>
             <span class="close">&times;</span>
           </section>
         </div>
       </div>
+
+      <section id="section-best-movie">
+        <article class="article-best-movie">
+          <h1 id="best-movie-title">Titre</h1>
+          <p id="best-movie-description"></p>
+          <button>Play</button>
+        </article>
+        <article class="best-movie-img">
+          <img src="images/no_image.png" class="film" id="best-movie-img" alt="No Image"> 
+        </article>
+      </section>
+
       <section class="section-categories">
         <h1 class="category-title">Films les mieux notés</h1>
         <div class="grid-categories">

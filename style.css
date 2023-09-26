@@ -53,29 +53,7 @@ a:active { text-decoration: none; }
 /* End of Navbar */
 
 /**/
-.section-best-movie {
-    display: grid;
-    grid-template-columns: 7fr 3fr;
-    height: 25em;
-    background-color: gainsboro;
-    padding: 0.5em;
-    gap: 10px;
-    width: 100%;
-    display: grid;
-}
 
-.article-best-movie{
-    height: 100%;
-    overflow: scroll;
-    background-color: bisque;
-}
-    
-.best-movie-img{
-    height: 400px;
-    background-color: brown;
-    justify-self: center;
-    align-self: center;
-}
 
 .grid-categories{
     display: grid;
@@ -109,6 +87,36 @@ a:active { text-decoration: none; }
     
 }
 
+#section-best-movie{
+    margin: 0 10em;
+    padding: 1em;
+    scroll-margin-block-start: 10.5em;
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    background-color: gainsboro;
+    border-radius: 2%;
+    box-shadow: 5px 5px 15px 5px #000000;
+
+}
+
+.article-best-movie{
+    border: #000;
+    border-width: 1px;
+}
+
+.best-movie-img{
+    height: 300px;
+    justify-self: center;
+    align-self: center;
+    display: flex;
+}
+
+#best-movie-title{
+    margin: 0.5em 0 0.5em 0;
+    font-size: 2em;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
 
 /* Popup */
 #popup {
@@ -144,6 +152,30 @@ a:active { text-decoration: none; }
     list-style-type: none;
 }
 
+.section-popup-movie {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    height: 40em;
+    background-color: gainsboro;
+    padding: 0.5em;
+    gap: 10px;
+    width: 100%;
+    display: grid;
+}
+
+.article-popup-movie{
+    height: 100%;
+    overflow: scroll;
+    background-color: bisque;
+}
+    
+.popup-movie-img{
+    height: 400px;
+    background-color: brown;
+    justify-self: center;
+    align-self: center;
+}
+
 #popup-title {
     margin: 0.5em 0 0.5em 0;
     font-size: 2em;
@@ -166,12 +198,13 @@ a:active { text-decoration: none; }
 }
 
 .close {
-  color: #b1b1af;
-  right: 0.25em;
+  color: black;
+  right: 0.5em;
   top: 0.5em;
   position: absolute;
   font-size: 28px;
   font-weight: bold;
+  
 }
 
 .close:hover,

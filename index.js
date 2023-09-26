@@ -107,6 +107,9 @@ document.addEventListener("click", function (e) {
 });
 
 
+
+
+
 async function openPopup(title) {
   const response = await fetch("http://localhost:8000/api/v1/titles/?" + new URLSearchParams({
     title: title
@@ -131,7 +134,14 @@ async function openPopup(title) {
   document.getElementById("popup-actors").textContent = "Acteurs : " + Array.from(data.actors).join(' | ');
   document.getElementById("popup-duration").textContent = "Durée du film : " + data.duration + " Minutes";
   document.getElementById("popup-countries").textContent = "Pays d'origine : " + Array.from(data.countries).join(' | ');
-  document.getElementById("popup-boxoffice").textContent = "Résultats au Box Office : " + data.worldwide_gross_income + "$";
+  var bo = document.getElementById("popup-boxoffice");
+  console.log(data.worldwide_gross_income)
+  if (data.worldwide_gross_income == null){
+    bo.textContent = "Résultats au Box Office : Inconnu";
+  }
+  else{
+    bo.textContent = "Résultats au Box Office : " + data.worldwide_gross_income + "$";
+  }
   document.getElementById("popup-description").textContent = "Résumé : " + data.long_description;
 }
 
@@ -176,6 +186,26 @@ async function logMovies(nbPage, categoryName) {
   })
 }
 
+async function logBestMovie() {
+  const response = await fetch("http://localhost:8000/api/v1/titles/?" + new URLSearchParams({
+    sort_by: "-imdb_score"
+  }));
+
+  const movies = await response.json();
+  var movie_url = movies.results[0].url
+
+  const response_Best_Movie = await fetch(movie_url);
+  const best_movie = await response_Best_Movie.json();
+
+  document.getElementById("best-movie-title").textContent = best_movie.title;
+  document.getElementById("best-movie-description").textContent = best_movie.description;
+  document.getElementById("best-movie-img").src = best_movie.image_url;
+  document.getElementById("best-movie-img").textContent = best_movie.title;
+
+
+}
+
+logBestMovie()
 logMovies(1, CATEGORY1);
 logMovies(1, CATEGORY2);
 logMovies(1, CATEGORY3);
