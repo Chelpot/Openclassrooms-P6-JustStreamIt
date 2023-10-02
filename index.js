@@ -2,6 +2,8 @@
 const CATEGORY1 = "Fantasy"
 const CATEGORY2 = "History"
 const CATEGORY3 = "Action"
+const CATEGORYBEST = ""
+
 
 /* retrieve elements from html document */
 var popup = document.getElementById("popup");
@@ -22,69 +24,53 @@ var rightBtnBest = document.getElementById("right-btn-best-movie")
 var dictPagesByCategory = {}
 
 /* init pages */
-var pageFantasy = 1
-var pageHistory = 1
-var pageAction = 1
-var pageBest = 1
+var positionFantasy = 0
+var positionHistory = 0
+var positionAction = 0
+var positionBest = 0
 
 /* fantasy listener */
 leftBtnCat1.onclick = function () {
-  if (pageFantasy > 1) {
-    pageFantasy -= 1;
-    logMovies(pageFantasy, CATEGORY1);
-  }
+  positionFantasy -= 1;
+  logSevenMovies(CATEGORY1, positionFantasy);
 }
 
 rightBtnCat1.onclick = function () {
-  if (pageFantasy < dictPagesByCategory["maxPageFantasy"]) {
-    pageFantasy += 1
-    logMovies(pageFantasy, CATEGORY1);
-  }
+  positionFantasy += 1
+  logSevenMovies(CATEGORY1, positionFantasy);
 }
 
 /* history listener */
 leftBtnCat2.onclick = function () {
-  if (pageHistory > 1) {
-    pageHistory -= 1;
-    logMovies(pageHistory, CATEGORY2);
-  }
+  positionHistory -= 1;
+  logSevenMovies(CATEGORY2, positionHistory);
 }
 
 rightBtnCat2.onclick = function () {
-  if (pageHistory < dictPagesByCategory["maxPageHistory"]) {
-    pageHistory += 1
-    logMovies(pageHistory, CATEGORY2);
-  }
+  positionHistory += 1
+  logSevenMovies(CATEGORY2, positionHistory);
 }
 
 /* action listener */
 leftBtnCat3.onclick = function () {
-  if (pageAction > 1) {
-    pageAction -= 1;
-    logMovies(pageAction, CATEGORY3);
-  }
+  positionAction -= 1;
+  logSevenMovies(CATEGORY3, positionAction);
 }
 
 rightBtnCat3.onclick = function () {
-  if (pageAction < dictPagesByCategory["maxPageHistory"]) {
-    pageAction += 1
-    logMovies(pageAction, CATEGORY3);
-  }
+  positionAction += 1
+  logSevenMovies(CATEGORY3, positionAction);
 }
 
 /* best movies listener */
 leftBtnBest.onclick = function () {
-  if (pageBest > 1) {
-    pageBest -= 1;
-    logMoviesBest(pageBest);
-  }
+  positionBest -= 1;
+  logSevenMovies(CATEGORYBEST, positionBest);
 }
 
 rightBtnBest.onclick = function () {
-  if (pageBest < maxPageBest) {
-    pageBest += 1
-    logMoviesBest(pageBest);
-  }
+  positionBest += 1
+  logSevenMovies(CATEGORYBEST, positionBest);
 }
 
 /* close popup listeners */
@@ -129,13 +115,12 @@ async function openPopup(title) {
   document.getElementById("popup-genres").textContent = "Genres : " + Array.from(data.genres).join(' | ');
   document.getElementById("popup-publishedDate").textContent = "Film publié le : " + data.date_published;
   document.getElementById("popup-rated").textContent = "Rated : " + data.rated;
-  document.getElementById("popup-imbScore").textContent = "Score sur le site Imb : " + data.imdb_score;
+  document.getElementById("popup-imbScore").textContent = "Score sur le site Imdb : " + data.imdb_score;
   document.getElementById("popup-directors").textContent = "Directeurs : " + Array.from(data.directors).join(' | ');
   document.getElementById("popup-actors").textContent = "Acteurs : " + Array.from(data.actors).join(' | ');
   document.getElementById("popup-duration").textContent = "Durée du film : " + data.duration + " Minutes";
   document.getElementById("popup-countries").textContent = "Pays d'origine : " + Array.from(data.countries).join(' | ');
   var bo = document.getElementById("popup-boxoffice");
-  console.log(data.worldwide_gross_income)
   if (data.worldwide_gross_income == null){
     bo.textContent = "Résultats au Box Office : Inconnu";
   }
@@ -145,44 +130,50 @@ async function openPopup(title) {
   document.getElementById("popup-description").textContent = "Résumé : " + data.long_description;
 }
 
-async function logMoviesBest(nbPage) {
-  const response = await fetch("http://localhost:8000/api/v1/titles/?" + new URLSearchParams({
-    page: nbPage,
-    sort_by: "-imdb_score"
-  }));
-
-  const movies = await response.json();
-  maxPageBest = Math.trunc(movies.count / 5);
-
-  var films = document.getElementsByClassName("film-best");
-  films = Array.from(films)
-  films.forEach((element, index) => {
-    element.textContent = movies.results[index].title;
-    element.src = movies.results[index].image_url;
-  });
-
-}
-
-logMoviesBest(pageBest)
-
-async function logMovies(nbPage, categoryName) {
+async function logSevenMovies(categoryName, position) {
+  var movies = []
   const response = await fetch("http://localhost:8000/api/v1/titles/?" + new URLSearchParams({
     genre: categoryName,
-    page: nbPage,
+    sort_by: "-imdb_score"
+  }))
+  const moviePartOne = await response.json();
+  
+  const responseTwo = await fetch("http://localhost:8000/api/v1/titles/?" + new URLSearchParams({
+    genre: categoryName,
+    page: 2,
     sort_by: "-imdb_score"
   }))
 
-  const data = await response.json();
-  dictPagesByCategory[`maxPage${categoryName}`] = Math.trunc(data.count / 5);
-  categoryName = categoryName.toLowerCase()
+  const moviePartTwo = await responseTwo.json();
+
+  /*We only need first 7 results */
+  moviePartOne.results.forEach(element => {
+    movies.push(element)
+  });
+  movies.push(moviePartTwo.results[0])
+  movies.push(moviePartTwo.results[1])
+
+
+  if(categoryName==""){
+    categoryName="best"
+  }
+
+  categoryName = categoryName.toLowerCase();
+
   /* For each img in our Carousel we assign the corresponding datas */
   var moviesElements = document.getElementsByClassName(`film-${categoryName}`);
-  moviesElements = Array.from(moviesElements)
+  moviesElements = Array.from(moviesElements);
   moviesElements.forEach((element, index) => {
-    element.textContent = data.results[index].title;
-    element.src = data.results[index].image_url;
-    element.setAttribute('alt', data.results[index].title)
-
+    if (position+index >= 0){
+      pos = (position+index)%7;
+    }
+    else{
+      /*To be able to scroll to the left, we must take data in reverse order*/
+      pos = ((position+index)%7+7)%7;
+    }
+    element.textContent = movies[pos].title;
+    element.src = movies[pos].image_url;
+    element.setAttribute('alt', movies[pos].title);
   })
 }
 
@@ -204,8 +195,8 @@ async function logBestMovie() {
 
 
 }
-
 logBestMovie()
-logMovies(1, CATEGORY1);
-logMovies(1, CATEGORY2);
-logMovies(1, CATEGORY3);
+logSevenMovies(CATEGORYBEST, 0)
+logSevenMovies(CATEGORY1, 0)
+logSevenMovies(CATEGORY2, 0)
+logSevenMovies(CATEGORY3, 0)

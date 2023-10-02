@@ -153,7 +153,6 @@ a:active { text-decoration: none; }
 }
 
 .section-popup-movie {
-    display: grid;
     grid-template-columns: 7fr 3fr;
     height: 40em;
     background-color: gainsboro;
@@ -198,7 +197,7 @@ a:active { text-decoration: none; }
 }
 
 .close {
-  color: black;
+  color: whitesmoke;
   right: 0.5em;
   top: 0.5em;
   position: absolute;
@@ -214,3 +213,9 @@ a:active { text-decoration: none; }
   cursor: pointer;
 }
 /*End of popup section*/
+
+footer{
+    height: 10em;
+    margin-top: 5em;
+    background-color: rgb(210, 210, 210);
+}
