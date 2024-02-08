@@ -1,35 +1,33 @@
 
-const CATEGORY1 = "Fantasy"
-const CATEGORY2 = "History"
-const CATEGORY3 = "Action"
-const CATEGORYBEST = ""
+const CATEGORY1 = "Fantasy";
+const CATEGORY2 = "History";
+const CATEGORY3 = "Action";
+const CATEGORYBEST = "";
 
 
 /* retrieve elements from html document */
 var popup = document.getElementById("popup");
 var span = document.getElementsByClassName("close")[0];
 
-var leftBtnCat1 = document.getElementById("left-btn-category-1")
-var rightBtnCat1 = document.getElementById("right-btn-category-1")
+var leftBtnCat1 = document.getElementById("left-btn-category-1");
+var rightBtnCat1 = document.getElementById("right-btn-category-1");
 
-var leftBtnCat2 = document.getElementById("left-btn-category-2")
-var rightBtnCat2 = document.getElementById("right-btn-category-2")
+var leftBtnCat2 = document.getElementById("left-btn-category-2");
+var rightBtnCat2 = document.getElementById("right-btn-category-2");
 
-var leftBtnCat3 = document.getElementById("left-btn-category-3")
-var rightBtnCat3 = document.getElementById("right-btn-category-3")
+var leftBtnCat3 = document.getElementById("left-btn-category-3");
+var rightBtnCat3 = document.getElementById("right-btn-category-3");
 
-var leftBtnBest = document.getElementById("left-btn-best-movie")
-var rightBtnBest = document.getElementById("right-btn-best-movie")
+var leftBtnBest = document.getElementById("left-btn-best-movie");
+var rightBtnBest = document.getElementById("right-btn-best-movie");
 
-var dictPagesByCategory = {}
+var buttonBestMovie = document.getElementById("button-best-movie");
 
 /* init pages */
-var positionFantasy = 0
-var positionHistory = 0
-var positionAction = 0
-var positionBest = 0
-
-
+var positionFantasy = 0;
+var positionHistory = 0;
+var positionAction = 0;
+var positionBest = 0;
 
 /* fantasy listener */
 leftBtnCat1.onclick = function () {
@@ -38,7 +36,7 @@ leftBtnCat1.onclick = function () {
 }
 
 rightBtnCat1.onclick = function () {
-  positionFantasy += 1
+  positionFantasy += 1;
   logSevenMovies(CATEGORY1, positionFantasy);
 }
 
@@ -49,7 +47,7 @@ leftBtnCat2.onclick = function () {
 }
 
 rightBtnCat2.onclick = function () {
-  positionHistory += 1
+  positionHistory += 1;
   logSevenMovies(CATEGORY2, positionHistory);
 }
 
@@ -60,7 +58,7 @@ leftBtnCat3.onclick = function () {
 }
 
 rightBtnCat3.onclick = function () {
-  positionAction += 1
+  positionAction += 1;
   logSevenMovies(CATEGORY3, positionAction);
 }
 
@@ -71,8 +69,13 @@ leftBtnBest.onclick = function () {
 }
 
 rightBtnBest.onclick = function () {
-  positionBest += 1
+  positionBest += 1;
   logSevenMovies(CATEGORYBEST, positionBest);
+}
+
+buttonBestMovie.onclick = function () {
+  title = document.getElementById("best-movie-title").textContent;
+  openPopup(title);
 }
 
 /* close popup listeners */
@@ -103,7 +106,7 @@ async function openPopup(title) {
   }));
 
   data = await response.json();
-  url_detail = data.results[0].url
+  url_detail = data.results[0].url;
 
   const response_detail = await fetch(url_detail);
   data = await response_detail.json();
@@ -136,14 +139,14 @@ async function logSevenMovies(categoryName, position) {
   const response = await fetch("http://localhost:8000/api/v1/titles/?" + new URLSearchParams({
     genre: categoryName,
     sort_by: "-imdb_score"
-  }))
+  }));
   const moviePartOne = await response.json();
   
   const responseTwo = await fetch("http://localhost:8000/api/v1/titles/?" + new URLSearchParams({
     genre: categoryName,
     page: 2,
     sort_by: "-imdb_score"
-  }))
+  }));
 
   const moviePartTwo = await responseTwo.json();
 
@@ -151,11 +154,12 @@ async function logSevenMovies(categoryName, position) {
   moviePartOne.results.forEach(element => {
     movies.push(element)
   });
-  movies.push(moviePartTwo.results[0])
-  movies.push(moviePartTwo.results[1])
+  movies.push(moviePartTwo.results[0]);
+  movies.push(moviePartTwo.results[1]);
+
 
   if(categoryName==""){
-    categoryName="best"
+    categoryName="best";
   }
   
   categoryName = categoryName.toLowerCase();
@@ -196,7 +200,7 @@ async function logBestMovie() {
   }));
 
   const movies = await response.json();
-  var movie_url = movies.results[0].url
+  var movie_url = movies.results[0].url;
 
   const response_Best_Movie = await fetch(movie_url);
   const best_movie = await response_Best_Movie.json();
@@ -208,8 +212,9 @@ async function logBestMovie() {
 
 
 }
-logBestMovie()
-logSevenMovies(CATEGORYBEST, 0)
-logSevenMovies(CATEGORY1, 0)
-logSevenMovies(CATEGORY2, 0)
-logSevenMovies(CATEGORY3, 0)
+
+logBestMovie();
+logSevenMovies(CATEGORYBEST, 0);
+logSevenMovies(CATEGORY1, 0);
+logSevenMovies(CATEGORY2, 0);
+logSevenMovies(CATEGORY3, 0);
