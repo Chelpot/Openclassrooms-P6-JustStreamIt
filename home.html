@@ -42,7 +42,7 @@
 
             </article>
             <article class="best-popup-img">
-              <img src="images/no_image.png" id="popup-img" alt="No Image"> 
+              <img src="images/no_image.png" id="popup-img" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';"> 
             </article>
             <span class="close">&times;</span>
           </section>
@@ -53,7 +53,7 @@
         <article class="article-best-movie">
           <h1 id="best-movie-title">Titre</h1>
           <p id="best-movie-description"></p>
-          <button class="button-best-movie">Play</button>
+          <button id ="button-best-movie" class="button-best-movie">Play</button>
         </article>
         <article class="best-movie-img">
           <img src="images/no_image.png" class="film" id="best-movie-img" alt="No Image"> 
@@ -63,49 +63,106 @@
       <section class="section-categories">
         <h1 class="category-title">Films les mieux notés</h1>
         <div class="grid-categories">
-          <img src="images/left_arrow.png" id="left-btn-best-movie">
-          <img src="images/no_image.png" class="film-best film" alt="No Image">
-          <img src="images/no_image.png" class="film-best film" alt="No Image">
-          <img src="images/no_image.png" class="film-best film" alt="No Image">
-          <img src="images/no_image.png" class="film-best film" alt="No Image">
-          <img src="images/no_image.png" class="film-best film" alt="No Image">
-          <img src="images/right_arrow.png" id="right-btn-best-movie">
+          <img src="images/left_arrow.png" id="left-btn-best-movie" class="btn-carousel">
+          <div>
+            <img src="images/no_image.png" class="film-best film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-best title-film"></p>
+          </div>
+          <div>
+            <img src="images/no_image.png" class="film-best film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-best title-film"></p>
+          </div>          <div>
+            <img src="images/no_image.png" class="film-best film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-best title-film"></p>
+          </div>          <div>
+            <img src="images/no_image.png" class="film-best film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-best title-film" title-film></p>
+          </div>          <div>
+            <img src="images/no_image.png" class="film-best film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-best title-film" title-film></p>
+          </div>
+          <img src="images/right_arrow.png" id="right-btn-best-movie" class="btn-carousel">
         </div>
       </section>
       <section class="section-categories" id="categories">
         <h1 class="category-title">Films Fantaisie</h1>
         <div class="grid-categories">
-          <img src="images/left_arrow.png" id="left-btn-category-1">
-          <img src="images/no_image.png" class="film-fantasy film" alt="No Image">
-          <img src="images/no_image.png" class="film-fantasy film" alt="No Image">
-          <img src="images/no_image.png" class="film-fantasy film" alt="No Image">
-          <img src="images/no_image.png" class="film-fantasy film" alt="No Image">
-          <img src="images/no_image.png" class="film-fantasy film" alt="No Image">
-          <img src="images/right_arrow.png" id="right-btn-category-1">
+          <img src="images/left_arrow.png" id="left-btn-category-1" class="btn-carousel">
+          <div>
+            <img src="images/no_image.png" class="film-fantasy film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-fantasy title-film"></p>
+          </div>
+          <div>
+            <img src="images/no_image.png" class="film-fantasy film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-fantasy title-film"></p>
+          </div>
+          <div>
+            <img src="images/no_image.png" class="film-fantasy film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-fantasy title-film"></p>
+          </div>
+          <div>
+            <img src="images/no_image.png" class="film-fantasy film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-fantasy title-film"></p>
+          </div>
+          <div>
+            <img src="images/no_image.png" class="film-fantasy film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-fantasy title-film"></p>
+          </div>
+          <img src="images/right_arrow.png" id="right-btn-category-1" class="btn-carousel">
         </div>
       </section>
       <section class="section-categories">
         <h1 class="category-title">Films Histoire</h1>
         <div class="grid-categories">
-          <img src="images/left_arrow.png" id="left-btn-category-2">
-          <img src="images/no_image.png" class="film-history film" alt="No Image">
-          <img src="images/no_image.png" class="film-history film" alt="No Image">
-          <img src="images/no_image.png" class="film-history film" alt="No Image">
-          <img src="images/no_image.png" class="film-history film" alt="No Image">
-          <img src="images/no_image.png" class="film-history film" alt="No Image">
-          <img src="images/right_arrow.png" id="right-btn-category-2">
+          <img src="images/left_arrow.png" id="left-btn-category-2" class="btn-carousel">
+          <div>
+            <img src="images/no_image.png" class="film-history film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-history title-film"></p>
+          </div>
+          <div>
+            <img src="images/no_image.png" class="film-history film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-history title-film"></p>
+          </div>
+          <div>
+            <img src="images/no_image.png" class="film-history film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-history title-film"></p>
+          </div>
+          <div>
+            <img src="images/no_image.png" class="film-history film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-history title-film"></p>
+          </div>
+          <div>
+            <img src="images/no_image.png" class="film-history film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-history title-film"></p>
+          </div>
+          <img src="images/right_arrow.png" id="right-btn-category-2"  class="btn-carousel">
         </div>
       </section>
       <section class="section-categories">
         <h1 class="category-title">Films Action</h1>
         <div class="grid-categories">
-          <img src="images/left_arrow.png" id="left-btn-category-3">
-          <img src="images/no_image.png" class="film-action film" alt="No Image">
-          <img src="images/no_image.png" class="film-action film" alt="No Image">
-          <img src="images/no_image.png" class="film-action film" alt="No Image">
-          <img src="images/no_image.png" class="film-action film" alt="No Image">
-          <img src="images/no_image.png" class="film-action film" alt="No Image">
-          <img src="images/right_arrow.png" id="right-btn-category-3">
+          <img src="images/left_arrow.png" id="left-btn-category-3" class="btn-carousel">
+          <div>
+            <img src="images/no_image.png" class="film-action film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-action title-film"></p>
+          </div>
+          <div>
+            <img src="images/no_image.png" class="film-action film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-action title-film"></p>
+          </div>
+          <div>
+            <img src="images/no_image.png" class="film-action film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-action title-film"></p>
+          </div>
+          <div>
+            <img src="images/no_image.png" class="film-action film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-action title-film"></p>
+          </div>
+          <div>
+            <img src="images/no_image.png" class="film-action film" alt="No Image" onerror="this.onerror=null;this.src='images/no_image.png';">
+            <p class="title-film-action title-film"></p>
+          </div>
+          <img src="images/right_arrow.png" id="right-btn-category-3" class="btn-carousel">
         </div>
       </section>
     </main>

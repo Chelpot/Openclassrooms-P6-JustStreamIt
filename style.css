@@ -118,6 +118,25 @@ a:active { text-decoration: none; }
     text-align: center;
 }
 
+.film, .btn-carousel{
+    cursor: pointer;
+}
+
+.film{
+    min-width: 182px;
+    min-height: 268px;
+    margin: auto;
+}
+
+.title-film{
+    width: 182px;
+    min-height: 75px;
+    word-wrap: break-word;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    
+}
+
 /* Popup */
 #popup {
     display: none;

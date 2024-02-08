@@ -29,6 +29,8 @@ var positionHistory = 0
 var positionAction = 0
 var positionBest = 0
 
+
+
 /* fantasy listener */
 leftBtnCat1.onclick = function () {
   positionFantasy -= 1;
@@ -88,13 +90,12 @@ document.addEventListener("click", function (e) {
   if (e.target.classList.contains("film")) {
     title = e.target.textContent;
     openPopup(title)
-
+  }
+  if (e.target.classList.contains("button-best-movie")) {
+    title = document.getElementById("best-movie-img").textContent
+    openPopup(title)
   }
 });
-
-
-
-
 
 async function openPopup(title) {
   const response = await fetch("http://localhost:8000/api/v1/titles/?" + new URLSearchParams({
@@ -153,17 +154,16 @@ async function logSevenMovies(categoryName, position) {
   movies.push(moviePartTwo.results[0])
   movies.push(moviePartTwo.results[1])
 
-
   if(categoryName==""){
     categoryName="best"
   }
-
+  
   categoryName = categoryName.toLowerCase();
 
   /* For each img in our Carousel we assign the corresponding datas */
-  var moviesElements = document.getElementsByClassName(`film-${categoryName}`);
-  moviesElements = Array.from(moviesElements);
-  moviesElements.forEach((element, index) => {
+  var movies_images = document.getElementsByClassName(`film-${categoryName}`);
+  movies_images = Array.from(movies_images);
+  movies_images.forEach((element, index) => {
     if (position+index >= 0){
       pos = (position+index)%7;
     }
@@ -174,6 +174,19 @@ async function logSevenMovies(categoryName, position) {
     element.textContent = movies[pos].title;
     element.src = movies[pos].image_url;
     element.setAttribute('alt', movies[pos].title);
+  })
+  /* For each title in our Carousel we assign the title */
+  var movies_titles = document.getElementsByClassName(`title-film-${categoryName}`);
+  movies_titles = Array.from(movies_titles);
+  movies_titles.forEach((element, index) => {
+    if (position+index >= 0){
+      pos = (position+index)%7;
+    }
+    else{
+      /*To be able to scroll to the left, we must take data in reverse order*/
+      pos = ((position+index)%7+7)%7;
+    }
+    element.textContent = movies[pos].title
   })
 }
 
